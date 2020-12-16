@@ -1,24 +1,29 @@
-# README
+# テーブル設計
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column            | Type       | Options                   |
+| ----------------- | ---------- | --------------------------|
+| name              | string     |  null: false, unique:true |
+| first_name        | string     |  null: false              |
+| first_name_kana   | string     |  null: false              |
+| last_name         | string     |  null: false              |
+| last_name_kana    | string     |  null: false              |
+| birthday          | date       |  null: false              |
+| email             | string     |  null: false, unique:true |
+| encrypted_password| string     |  null:false               |
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+- has_many :food-racks
+## food-racks テーブル
 
-* System dependencies
+| Column          | Type       | Options                        |
+| --------------- | -----------| -------------------------------|
+| food_name       | string     | null: false                    |
+| user            | references | null: false, foreign_key: true |
+| memo            | text       |                                |
+| category_id     | integer    |                                |
+| food_deadline   | integer    | null: false                    |
+### Association
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- belongs_to :user
